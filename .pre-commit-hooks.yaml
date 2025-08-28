@@ -8,7 +8,7 @@
   files: |
     (?x)
     ^(
-      \.mergify\.(yml|yaml)
-      | \.mergify/config\.(yml|yaml)
-      | \.github/mergify\.(yml|yaml)
+      \.mergify\.yml
+      | \.mergify/config\.yml
+      | \.github/mergify\.yml
     )$
