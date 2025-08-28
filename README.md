@@ -30,5 +30,5 @@ repos:
     rev: 1.0.0
     hooks:
       - id: validate-mergify-config
-        args: ["--strict"]
+        args: ["--verbose"]
 ```
