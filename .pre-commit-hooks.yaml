@@ -1,0 +1,14 @@
+- id: validate-mergify-config
+  name: Validate Mergify configuration
+  description: Validate Mergify configuration files against the official schema
+  entry: check-jsonschema --schemafile https://docs.mergify.com/mergify-configuration-schema.json
+  language: python
+  additional_dependencies:
+    - check-jsonschema==0.33.3
+  files: |
+    (?x)
+    ^(
+      \.mergify\.(yml|yaml)
+      | \.mergify/config\.(yml|yaml)
+      | \.github/mergify\.(yml|yaml)
+    )$

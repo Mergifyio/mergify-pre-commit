@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mergify-pre-commit"
+version = "1.0.0"
+description = "Official pre-commit hooks for Mergify (validate Mergify config)."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+  { name = "Mergify", email = "support@mergify.com" }
+]
+keywords = ["pre-commit", "mergify", "check-jsonschema", "schema"]
+
+[project.urls]
+Homepage = "https://github.com/Mergifyio/mergify-pre-commit"
+Repository = "https://github.com/Mergifyio/mergify-pre-commit"
+Issues = "https://github.com/Mergifyio/mergify-pre-commit/issues"
