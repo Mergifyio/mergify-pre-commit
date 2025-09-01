@@ -9,26 +9,36 @@ Add the following to your `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/Mergifyio/mergify-pre-commit
-    rev: 1.0.0
+    rev: 1.1.0
     hooks:
+      - id: validate-mergify-config-location
       - id: validate-mergify-config
 ```
 
-It uses `check-jsonschema` under the hood with Mergify's official schema:
+### validate-mergify-config
 
-```
-https://docs.mergify.com/mergify-configuration-schema.json
-```
+Validate Mergify configuration files against the official schema.
 
-### Customization
+- Uses `check-jsonschema` with Mergify's schema: `https://docs.mergify.com/mergify-configuration-schema.json`
+- Targets files matching the hook's `files` pattern.
 
-To pass extra arguments to `check-jsonschema`, use `args` in your config. For example, to enable verbose mode:
+Customization example (pass extra args to `check-jsonschema`):
 
 ```yaml
 repos:
   - repo: https://github.com/Mergifyio/mergify-pre-commit
-    rev: 1.0.0
+    rev: 1.1.0
     hooks:
       - id: validate-mergify-config
         args: ["--verbose"]
 ```
+
+### validate-mergify-config-location
+
+Ensure exactly one Mergify configuration file exists in an allowed location.
+
+- Allowed locations (yml only):
+  - `.mergify.yml`
+  - `.mergify/config.yml`
+  - `.github/mergify.yml`
+- Runs as a system shell script, checks repo state (not just staged files).
