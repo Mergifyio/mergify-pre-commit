@@ -22,7 +22,7 @@ https://docs.mergify.com/mergify-configuration-schema.json
 
 ### Customization
 
-- To pass extra arguments to `check-jsonschema`, use `args` in your config. For example, to enable strict mode:
+To pass extra arguments to `check-jsonschema`, use `args` in your config. For example, to enable verbose mode:
 
 ```yaml
 repos:
