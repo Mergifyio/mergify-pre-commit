@@ -12,3 +12,32 @@
       | \.mergify/config\.yml
       | \.github/mergify\.yml
     )$
+
+- id: validate-mergify-config-location
+  name: Validate Mergify configuration location
+  description: Ensure exactly one Mergify configuration file exists in an allowed location
+  entry: sh -eu -c
+  language: system
+  pass_filenames: false
+  always_run: true
+  args:
+    - |
+      found=""
+      for f in \
+        .mergify.yml \
+        .mergify/config.yml \
+        .github/mergify.yml
+      do
+        [ -f "$f" ] || continue
+        if [ -z "$found" ]; then
+          found="$f"
+        else
+          printf "Multiple Mergify configuration files found. Ensure only one location is used:\n  - %s\n  - %s\n" "$found" "$f" >&2
+          exit 1
+        fi
+      done
+
+      if [ -z "$found" ]; then
+        echo "Mergify configuration missing. Expected one of: .mergify.yml, .mergify/config.yml, .github/mergify.yml" >&2
+        exit 1
+      fi
