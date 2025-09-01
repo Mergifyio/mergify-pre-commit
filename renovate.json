@@ -1,0 +1,13 @@
+{
+  "extends": ["config:base"],
+  "regexManagers": [
+    {
+      "fileMatch": ["^\\.pre-commit-hooks\\.yaml$"],
+      "matchStrings": [
+        "(?m)^\\s*-\\s*(?<depName>[A-Za-z0-9_.-]+)==(?<currentValue>[^\\s#]+)\\s*$"
+      ],
+      "datasourceTemplate": "pypi"
+    }
+  ]
+}
+
