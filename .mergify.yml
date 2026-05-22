@@ -2,8 +2,6 @@ extends: .github
 
 queue_rules:
   - name: default
-    autoqueue: true
-    allow_inplace_checks: true
     queue_conditions:
       - "#approved-reviews-by>=2"
       - "#changes-requested-reviews-by=0"
@@ -16,17 +14,13 @@ queue_rules:
     merge_method: squash
 
   - name: lowprio
-    autoqueue: true
-    allow_inplace_checks: true
     queue_conditions:
       - "#commits=1"
       - author=renovate[bot]
-    merge_method: merge
+    merge_method: fast-forward
     batch_size: 7
     batch_max_wait_time: 5min
     commit_message_template:
-    queue_branch_merge_method: fast-forward
-
 pull_request_rules:
   - name: request review
     conditions:
@@ -46,3 +40,4 @@ merge_queue:
 
 merge_protections_settings:
   reporting_method: deployments
+  auto_merge_conditions: true
