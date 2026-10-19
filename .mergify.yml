@@ -3,7 +3,7 @@ extends: .github
 queue_rules:
   - name: default
     queue_conditions:
-      - "#approved-reviews-by>=2"
+      - "#approved-reviews-by>=1"
       - "#changes-requested-reviews-by=0"
       - "#review-threads-unresolved=0"
       - "#review-requested=0"
