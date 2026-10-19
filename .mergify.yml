@@ -21,7 +21,6 @@ queue_rules:
     merge_method: fast-forward
     batch_size: 7
     batch_max_wait_time: 5min
-    commit_message_template:
 pull_request_rules:
   - name: request review
     conditions:
